@@ -1,9 +1,31 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="https://jakarta.ee/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_2.xsd"
-             version="3.2">
-    <persistence-unit name="default">
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+             https://jakarta.ee/xml/ns/persistence/persistence_3_1.xsd"
+             version="3.1">
 
+    <persistence-unit name="tele_expertise" transaction-type="RESOURCE_LOCAL">
+        <!-- Classes JPA -->
+        <class>org.tele.expertise.demo.model.Patient</class>
+        <class>org.tele.expertise.demo.model.SigneVital</class>
+        <class>org.tele.expertise.demo.model.Medecin</class>
+        <class>org.tele.expertise.demo.model.Consultation</class>
+        <class>org.tele.expertise.demo.model.ActeTechnique</class>
+
+        <!-- Propriétés Hibernate -->
+        <properties>
+            <!-- JDBC connection -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tele_expertise?useSSL=false&amp;serverTimezone=UTC"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value=""/>
+
+            <!-- Hibernate properties -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
     </persistence-unit>
 </persistence>

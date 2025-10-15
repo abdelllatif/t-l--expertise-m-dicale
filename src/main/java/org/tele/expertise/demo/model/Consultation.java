@@ -11,6 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "consultation")
 public class Consultation {
+    public static Double cout=300.0;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,7 +34,7 @@ public class Consultation {
     private LocalDateTime dateConsultation = LocalDateTime.now();
 
     @Column(nullable = false)
-    private Double cout = 150.0;
+    private Double coutTotal;
 
     @OneToMany(mappedBy = "consultation", cascade = CascadeType.ALL)
     private List<ActeTechnique> actes;

@@ -2,6 +2,8 @@ package org.tele.expertise.demo.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.tele.expertise.demo.enums.StatutFileAttente;
+
 import java.time.LocalDateTime;
 
 @Data
@@ -19,6 +21,9 @@ public class FileAttente {
     @Column(nullable = false)
     private LocalDateTime dateArrivee = LocalDateTime.now();
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Boolean enAttente = true;
+    private StatutFileAttente status = StatutFileAttente.EN_ATTENTE;
+
+
 }

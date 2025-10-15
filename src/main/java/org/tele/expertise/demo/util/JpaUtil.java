@@ -10,17 +10,20 @@ public class JpaUtil {
     static {
         try {
             emf = Persistence.createEntityManagerFactory("tele_expertise");
+            System.out.println("EMF created successfully!");
+
         } catch (Exception e) {
+            System.err.println("Erreur lors de la création de l'EntityManagerFactory : ");
             e.printStackTrace();
             emf = null;
         }
     }
 
     public static EntityManager getEntityManager() {
-        if (emf == null) {
-            return null;
+        if (emf != null) {
+            return emf.createEntityManager();
         }
-        return emf.createEntityManager();
+        return null;
     }
 
     public static boolean isConnected() {

@@ -21,14 +21,19 @@ public class Patient {
     private String prenom;
 
     @Column(nullable = false)
-    private LocalDate dateNaissance;
+    private int age;
 
     @Column(nullable = false, unique = true)
-    private String numeroSecuriteSociale;
+    private String cniNumero;
 
     private String telephone;
 
     private String adresse;
+    @Column(
+            nullable = false,
+            columnDefinition = "datetime(0) default current_timestamp(0)"
+    )
+    private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     private List<SigneVital> signesVitaux;
@@ -39,6 +44,5 @@ public class Patient {
     @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
     private FileAttente fileAttente;
 
-    @Column(nullable = false)
-    private LocalDateTime dateEnregistrement = LocalDateTime.now();
+
 }
